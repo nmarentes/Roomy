@@ -5,7 +5,6 @@ import CreateOrganization from './CreateOrganization';
 import CreateUser from './CreateUser';
 import RoomManager from './RoomManager.jsx';
 import Scheduler from './Scheduler.jsx';
-import FloorCanvas from './FloorCanvas.jsx';
 
 class App extends Component {
 	constructor() {
@@ -109,7 +108,7 @@ class App extends Component {
 					this.setState({password: ''});
 				} else {
 					console.log('in else')
-					this.setState({loginErr: 'Invalid login'})
+					this.setState({loginErr: 'Invalid login, please try again.'})
 				}
 			}
 		}.bind(this);
