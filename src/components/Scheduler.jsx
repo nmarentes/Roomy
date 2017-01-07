@@ -69,7 +69,7 @@ class Scheduler extends Component {
 			const roomName = this.props.rooms[this.state.selectedRoomIndex].name;
 			//UPDATE: remove selectedSlot and use selectedSlots so that user can choose multiple time slots
 			const selectedTimeSlot = this.state.selectedSlot;
-			const userName = "dhani";
+			const userName = "steve";
 
 			console.log(isValidDate(date), roomName, selectedTimeSlot, userName);
 			if (isValidDate(date) && roomName && selectedTimeSlot && userName) {
@@ -77,7 +77,7 @@ class Scheduler extends Component {
 				const apiDate = this.state.selectedDate.substring(5) + "-" + this.state.selectedDate.substring(0, 4);
 				const data = "date=" + apiDate + "&roomName=" + roomName + "&startTime=" + selectedTimeSlot + "&userName=" + userName;
 				this.props.httpRequest("post", "/reservation", data, (result) => {
-					console.log('sucess!!!!!!!!!!!');
+					console.log('success!!!!!!!!!!!');
 					//this.setState({successMessage: "Reservation details: " + result});
 				});
 			} else {

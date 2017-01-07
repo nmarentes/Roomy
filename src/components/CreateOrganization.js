@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+//this page is not working yet-  organizations are not yet set up
 export default class CreateOrganization extends React.Component {
     
   render() {

@@ -85,6 +85,7 @@ app.get('/rooms/:name/reservations', (req, res) =>{
     });
 });
 
+//Display JSON page with a list of rooms
 app.get('/rooms', (req, res) =>{
   db.getRooms().then((rooms) =>{
     res.json(rooms);

@@ -1,7 +1,7 @@
 'use strict';
 const Sequelize = require('sequelize');
 //Necessary to setup your database connection, default database is get_a_room
-const sequelize = new Sequelize('get_a_room', 'root'/*database user*/, '2323'/*password*/);
+const sequelize = new Sequelize('postgres://dybuiaet:E8kIGsXhOMosizZu07eN5bTdsywYxbrF@elmer.db.elephantsql.com:5432/dybuiaet');
 const moment = require('moment');
 
 const db = {};
@@ -116,11 +116,15 @@ const User = sequelize.define('user', {
   password: Sequelize.STRING
 });
 
-const AccessGroup = sequelize.define('accessGroup', {
-  name: Sequelize.STRING,
-  accessLevel: Sequelize.STRING,
-  organization: Sequelize.STRING
+
+const Reservation = sequelize.define('reservation', {
+  roomId: Sequelize.INTEGER,
+  userId: Sequelize.INTEGER,
+  startTime: Sequelize.DATE,
+  endTime: Sequelize.DATE
 });
+
+User.hasMany(Reservation);
 
 const Room = sequelize.define('room', {
   name: Sequelize.STRING,
@@ -130,22 +134,23 @@ const Room = sequelize.define('room', {
   color: Sequelize.STRING,
 });
 
-const Reservation = sequelize.define('reservation', {
-  roomId: Sequelize.INTEGER,
-  userId: Sequelize.INTEGER,
-  startTime: Sequelize.DATE,
-  endTime: Sequelize.DATE
-});
+//not implemented yet 
+// const AccessGroup = sequelize.define('accessGroup', {
+//   name: Sequelize.STRING,
+//   accessLevel: Sequelize.STRING,
+//   organization: Sequelize.STRING
+// });
 
-const UserAccessGroup = sequelize.define('userAccess', {
-  userId: Sequelize.INTEGER,
-  accessGroupId: Sequelize.INTEGER
-});
+// //not in use
+// const UserAccessGroup = sequelize.define('userAccess', {
+//   userId: Sequelize.INTEGER,
+//   accessGroupId: Sequelize.INTEGER
+// });
 
 User.sync();
-AccessGroup.sync();
+//AccessGroup.sync();
 Room.sync();
 Reservation.sync();
-UserAccessGroup.sync();
+//UserAccessGroup.sync();
 
 module.exports = db;
