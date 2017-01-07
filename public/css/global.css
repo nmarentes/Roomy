@@ -1,0 +1,201 @@
+/* Reset
+============================================================== */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Universal - box sizing
+============================================================== */
+* {
+  box-sizing: border-box;
+}
+
+/* Body Layout
+============================================================== */
+body {
+  background: white;
+  font-size: 100%;
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+}
+
+/* Container
+============================================================== */
+#container, .container {
+  width: 960px;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+/* header
+============================================================== */
+header h1 {
+  font-family: 'Reenie Beanie', cursive;
+  color: white;
+  font-size: 38px;
+  margin-top: 15px;
+}
+/* Login and Signup
+============================================================== */
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: url('http://i.imgur.com/66VW0dX.jpg') no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+
+#hero {
+  width: 55%;
+  float: left;
+  margin-right: 10%;
+  margin-top: 100px;
+  position: relative;
+  z-index: 3;
+}
+
+.wrapper h2 {
+  font-size: 5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.wrapper p {
+  color: white;
+  line-height: 1.5;
+}
+
+#adminfield {
+  padding: 1em;
+  width: 35%;
+  margin-top: 120px;
+  float: right;
+  color: white;
+  background: rgba(0,0,0,.75);
+}
+
+#adminfield h3 {
+  margin-bottom: 15px;
+}
+
+#forms div {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+#forms label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+#forms input {
+  width: 100%;
+  height: 32px;
+  outline: 0;
+  -webkit-appearance: none;
+  border: 0;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding-left: 5px;
+}
+
+#loginbtn, #submit {
+  display: block;
+  height: 35px;
+  width: 80px;
+  margin-left: 210px;
+  background: #0063a4;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 33px;
+  font-size: 14px;
+  outline: 0;
+  -webkit-appearance: none;
+  border: 0;
+}
+
+#create {
+  padding: 1em;
+  width: 200px;
+  color: white;
+  position: absolute;
+  top: 298px;
+  right: 110px;
+  font-size: 14px;
+}
+ #hero span {
+   font-weight: bold;
+ }
+
+#create a {
+  color: #86dbf4;
+}
+
+#already {
+  display: block;
+  width: 150px;
+  color: #86dbf4;
+  position: absolute;
+  top: 380px;
+  right: 130px;
+  font-size: 14px;
+}
+
+#createsuccess {
+  color: white;
+  text-align: center;
+}
+
+#err {
+    text-align: center;
+    color: #dd3349;
+    margin-top: .5em;
+}
