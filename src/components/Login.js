@@ -27,35 +27,32 @@ export default class Login extends React.Component {
     
   render() {
     return (
-      <div>
+      <div className="wrapper">
+        <div className="container">
+          <header><h1>Get a Room</h1></header>
+        </div>
       <div id="container" className="app-container">
+      <div id="herobox"></div>
+        <div id="hero">
+          <h2>Disrupt Room Scheduling.</h2>
+          <p>Tired of not getting a room when you want a room?<br />Let <span>Get a Room</span> get you a room when you want a room.</p>
+        </div>
         <div id="adminfield" className="admin-field">
-          <div id="containertitle" className="container-title">Log in</div>
-           
+          <h3>Log in </h3>
           <div id="forms" className="forms">
-            <div>Username: <input id="username" ref="username" onKeyPress={this.handleKeyPress} onChange={this.props.username} className="username"></input></div>
-            <div>Password: <input type="password" id="password" onKeyPress={this.handleKeyPress} ref="password" onChange={this.props.password} className="password"></input></div> 
+            <div><label>Username:</label> <input id="username" ref="username" onKeyPress={this.handleKeyPress} onChange={this.props.username} className="username"></input></div>
+            <div><label>Password:</label> <input type="password" id="password" onKeyPress={this.handleKeyPress} ref="password" onChange={this.props.password} className="password"></input></div> 
           </div>
-         
-
-            <button type="submit" onClick={this.handleOnLogin} id="loginbtn">Login</button>
-            <div id="err">{this.props.loginErr}</div>
-
+          <button type="submit" onClick={this.handleOnLogin} id="loginbtn">Login</button>
+          <div id="err">{this.props.loginErr}</div>
         </div>
         
         <div id="create" className="create"> 
-
-          <div id="containertitle" className="container-title">New User?</div>
-          <div id="buttons">
-            <button type="button" onClick={this.props.createOrg} id="createorgbtn">Create a new Organization</button>
-            <button type="button" onClick={this.props.createUser} id="createuserbtn">Create a new User</button>
-          </div>
-
+          <p><a href="#" onClick={this.props.createUser}>New User? Sign up here.</a></p>
         </div>
+        <div id="createsuccess">{this.props.createSuccess}</div>
         </div>
-        <center><div id="createsuccess">{this.props.createSuccess}</div></center>
-        </div>
-        
+      </div>  
     );
   }
 }
