@@ -1,7 +1,9 @@
 'use strict';
 const Sequelize = require('sequelize');
 //Necessary to setup your database connection, default database is get_a_room
-const sequelize = new Sequelize('get_a_room', 'root'/*database user*/, '2323'/*password*/);
+//const sequelize = new Sequelize('get_a_room', 'root'/*database user*/, '2323'/*password*/);
+//const sequelize = new Sequelize('postgres://dybuiaet:E8kIGsXhOMosizZu07eN5bTdsywYxbrF@elmer.db.elephantsql.com:5432/dybuiaet');
+const sequelize = new Sequelize('postgres://canoc:football@localhost:5432/get_a_room');
 const moment = require('moment');
 
 const db = {};
@@ -19,7 +21,8 @@ db.validateUser = (user) =>{
       .then((usr) =>{
         if(usr === null) return false;
         if(usr.password !== user.password ){
-          return 'Some fields are filled out incorrectly.';
+          //return 'Some fields are filled out incorrectly.';
+          return false;
         }
         return true;
       });
@@ -105,7 +108,7 @@ db.addReservation = (rsvp) =>{
     return User.findOne({where: {name: rsvp.userName}})
       .then((usr) =>{
         if(usr === null) return ('User does not exist.');
-        return Reservation.create({startTime: date, userId: usr.id, roomId: rm.id});
+        return Reservation.create({usersname: usr.name, startTime: date, userId: usr.id, roomId: rm.id});
       });
   });
 };
@@ -133,6 +136,7 @@ const Room = sequelize.define('room', {
 const Reservation = sequelize.define('reservation', {
   roomId: Sequelize.INTEGER,
   userId: Sequelize.INTEGER,
+  usersName: Sequelize.STRING,
   startTime: Sequelize.DATE,
   endTime: Sequelize.DATE
 });
