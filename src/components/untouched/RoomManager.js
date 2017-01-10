@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
-import AddRoomPanel from './AddRoomPanel.jsx';
-import RoomList from './RoomList.jsx';
+import AddRoomPanel from './AddRoomPanel';
+import RoomList from './RoomList';
 
 class RoomManager extends Component {
 	render() {
