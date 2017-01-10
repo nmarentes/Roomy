@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
-import SelectRoomButton from './SelectRoomButton.jsx';
+import SelectRoomButton from './SelectRoomButton';
 
 class RoomSelector extends Component {
 	constructor(props) {

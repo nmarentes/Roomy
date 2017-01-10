@@ -1,31 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { broswerHistory, Link } from 'react-router';
 
-export default class Login extends React.Component {
-    constructor() {
-        super();
-        this.handleOnLogin = this.handleOnLogin.bind(this);
-        this.handleKeyPress = this.handleKeyPress.bind(this);
-    }
-    handleOnKey(target) {
-      console.log('key pressed')
-      console.log(target)
-      if(target.charCode==13){
-            alert('Enter clicked!!!');    
-      }
-
-    }
-    handleOnLogin() {
-        this.refs.username.value = '';
-        this.refs.password.value = '';
-        this.props.login();
-    }
-    handleKeyPress(e){
-      if(e.key === 'Enter') {
-        this.handleOnLogin();
-      }
-    }
-    
-  render() {
+const Login = (props) => {
+  console.log(props);
     return (
       <div className="wrapper">
         <div className="container">
@@ -34,25 +11,26 @@ export default class Login extends React.Component {
       <div id="container" className="app-container">
       <div id="herobox"></div>
         <div id="hero">
-          <h2>Disrupt Room Scheduling.</h2>
+          <h2><span>Disrupt</span> Room Scheduling.</h2>
           <p>Tired of not getting a room when you want a room?<br />Let <span>Get a Room</span> get you a room when you want a room.</p>
         </div>
         <div id="adminfield" className="admin-field">
           <h3>Log in </h3>
           <div id="forms" className="forms">
-            <div><label>Username:</label> <input id="username" ref="username" onKeyPress={this.handleKeyPress} onChange={this.props.username} className="username"></input></div>
-            <div><label>Password:</label> <input type="password" id="password" onKeyPress={this.handleKeyPress} ref="password" onChange={this.props.password} className="password"></input></div> 
+            <div><label>Username:</label> <input id="username" onChange={props.children.username} className="username" /></div>
+            <div><label>Password:</label> <input type="password" id="password"  onChange={props.children.password} className="password" /></div> 
           </div>
-          <button type="submit" onClick={this.handleOnLogin} id="loginbtn">Login</button>
-          <div id="err">{this.props.loginErr}</div>
+          <button type="submit"  onClick={props.children.verify} id="loginbtn">Login</button>
+          <div id="err"></div>
         </div>
         
         <div id="create" className="create"> 
-          <p><a href="#" onClick={this.props.createUser}>New User? Sign up here.</a></p>
+          <p><Link to="signup">New User? Sign up here.</Link></p>
         </div>
-        <div id="createsuccess">{this.props.createSuccess}</div>
+        <div id="createsuccess"></div>
         </div>
       </div>  
     );
   }
-}
+
+export default Login;
