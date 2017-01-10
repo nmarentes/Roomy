@@ -6,6 +6,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const createToken = require('./util/createToken');
+const verifyToken = require('./util/verifyToken');
+const redis = require('redis');
+const moment = require('moment');
+
+const expireIn = moment().unix() + 5*60
+const client = redis.createClient();
 
 /*
   Access the db file in the database directory to alter Sequelize code
@@ -108,8 +115,48 @@ app.post('/user/create', (req, res) =>{
 app.post('/user/validate', (req, res) =>{
   db.validateUser(req.body)
     .then((user) =>{
-      res.json(user);
+      //res.json(user);
+      if (user) {
+        const token = createToken(req.body.password);
+
+        client.set(req.body.username, token, (err, reply) => {
+          if (err) {
+            res.status(500).send();
+          }
+          if (reply) {
+            client.expireat(req.body.username,expireIn);
+            res.status(200).json({ token: token });
+          } else {
+            res.status(500).send();
+          }
+        });
+      }
     });
+});
+
+app.post('/refresh_session', (req, res) => {
+  const token = req.body.token; // check if getting correct data
+
+  if (token) {
+    verifyToken(token).then((result) => { 
+      console.log('Verified Token:', result); 
+      client.get(result, (err, reply) => {
+        // Below if statement is checking if the token sent in the request
+        // is equal to the token retrieved from redis after using the 
+        // result of verifyToken to get the 'reply' (token) in redis.
+        // if they are equal cool, if not, then server error because...
+        if (token === reply) {
+          client.expireat(result, expireIn);
+          res.status(200).end('Session refreshed!');
+        } else {
+          res.status(500).end();
+        }
+      });
+    })
+    .catch((err) => {
+      res.status(401).send(err);
+    });
+  }
 });
 
 app.post('/room', (req,res)=>{
@@ -122,6 +169,12 @@ app.post('/reservation', (req,res)=>{
   db.addReservation(req.body).then((rsvp) =>{
     res.json(rsvp);
   });
+});
+
+app.post('/logout', (req, res) => {
+  console.log("KEY username to be deleted from redis when logging out and deleting session");
+  client.del(req.body.username);
+  res.status(200).send("Logged out successfully!");
 });
 
 app.listen(8080, function () {

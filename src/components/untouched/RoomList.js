@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
-import RemoveRoom from './RemoveRoom.jsx';
+import RemoveRoom from './RemoveRoom';
 
 class RoomList extends Component {
 	constructor(props) {

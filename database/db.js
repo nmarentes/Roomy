@@ -1,7 +1,13 @@
 'use strict';
 const Sequelize = require('sequelize');
 //Necessary to setup your database connection, default database is get_a_room
+<<<<<<< HEAD
 const sequelize = new Sequelize('postgres://dybuiaet:E8kIGsXhOMosizZu07eN5bTdsywYxbrF@elmer.db.elephantsql.com:5432/dybuiaet');
+=======
+//const sequelize = new Sequelize('get_a_room', 'root'/*database user*/, '2323'/*password*/);
+//const sequelize = new Sequelize('postgres://dybuiaet:E8kIGsXhOMosizZu07eN5bTdsywYxbrF@elmer.db.elephantsql.com:5432/dybuiaet');
+const sequelize = new Sequelize('postgres://canoc:football@localhost:5432/get_a_room');
+>>>>>>> a2dc4c58a49911f45b087428a3e8540ec3f09200
 const moment = require('moment');
 
 const db = {};
@@ -19,7 +25,8 @@ db.validateUser = (user) =>{
       .then((usr) =>{
         if(usr === null) return false;
         if(usr.password !== user.password ){
-          return 'Some fields are filled out incorrectly.';
+          //return 'Some fields are filled out incorrectly.';
+          return false;
         }
         return true;
       });
@@ -117,13 +124,7 @@ const User = sequelize.define('user', {
 });
 
 
-const Reservation = sequelize.define('reservation', {
-  usersName: Sequelize.STRING,
-  roomId: Sequelize.INTEGER,
-  userId: Sequelize.INTEGER,
-  startTime: Sequelize.DATE,
-  endTime: Sequelize.DATE
-});
+
 
 User.hasMany(Reservation);
 
@@ -135,12 +136,15 @@ const Room = sequelize.define('room', {
   color: Sequelize.STRING,
 });
 
-//not implemented yet 
-// const AccessGroup = sequelize.define('accessGroup', {
-//   name: Sequelize.STRING,
-//   accessLevel: Sequelize.STRING,
-//   organization: Sequelize.STRING
-// });
+
+const Reservation = sequelize.define('reservation', {
+  roomId: Sequelize.INTEGER,
+  userId: Sequelize.INTEGER,
+  usersName: Sequelize.STRING,
+  startTime: Sequelize.DATE,
+  endTime: Sequelize.DATE
+});
+
 
 // //not in use
 // const UserAccessGroup = sequelize.define('userAccess', {

@@ -1,9 +1,9 @@
 import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
-import RoomList from './RoomList.jsx';
-import DateSelector from './DateSelector.jsx';
-import RoomSelector from './RoomSelector.jsx';
-import TimeSlotSelector from './TimeSlotSelector.jsx';
+import RoomList from './RoomList';
+import DateSelector from './DateSelector';
+import RoomSelector from './RoomSelector';
+import TimeSlotSelector from './TimeSlotSelector';
 
 function isValidDate(date) {
 	if ( Object.prototype.toString.call(date) === "[object Date]") {

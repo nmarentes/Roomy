@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
-import SelectTimeSlotButton from './SelectTimeSlotButton.jsx';
+import SelectTimeSlotButton from './SelectTimeSlotButton';
 
 class TimeSlotSelector extends Component {
 	constructor(props) {
