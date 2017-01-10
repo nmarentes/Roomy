@@ -1,13 +1,8 @@
 'use strict';
 const Sequelize = require('sequelize');
-//Necessary to setup your database connection, default database is get_a_room
-<<<<<<< HEAD
-const sequelize = new Sequelize('postgres://dybuiaet:E8kIGsXhOMosizZu07eN5bTdsywYxbrF@elmer.db.elephantsql.com:5432/dybuiaet');
-=======
 //const sequelize = new Sequelize('get_a_room', 'root'/*database user*/, '2323'/*password*/);
 //const sequelize = new Sequelize('postgres://dybuiaet:E8kIGsXhOMosizZu07eN5bTdsywYxbrF@elmer.db.elephantsql.com:5432/dybuiaet');
 const sequelize = new Sequelize('postgres://canoc:football@localhost:5432/get_a_room');
->>>>>>> a2dc4c58a49911f45b087428a3e8540ec3f09200
 const moment = require('moment');
 
 const db = {};
