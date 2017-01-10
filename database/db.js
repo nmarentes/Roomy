@@ -108,7 +108,7 @@ db.addReservation = (rsvp) =>{
     return User.findOne({where: {name: rsvp.userName}})
       .then((usr) =>{
         if(usr === null) return ('User does not exist.');
-        return Reservation.create({startTime: date, userId: usr.id, roomId: rm.id});
+        return Reservation.create({usersname: usr.name, startTime: date, userId: usr.id, roomId: rm.id});
       });
   });
 };
@@ -136,6 +136,7 @@ const Room = sequelize.define('room', {
 const Reservation = sequelize.define('reservation', {
   roomId: Sequelize.INTEGER,
   userId: Sequelize.INTEGER,
+  usersName: Sequelize.STRING,
   startTime: Sequelize.DATE,
   endTime: Sequelize.DATE
 });
