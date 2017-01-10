@@ -118,8 +118,13 @@ const User = sequelize.define('user', {
   password: Sequelize.STRING
 });
 
-
-
+const Reservation = sequelize.define('reservation', {
+  roomId: Sequelize.INTEGER,
+  userId: Sequelize.INTEGER,
+  usersName: Sequelize.STRING,
+  startTime: Sequelize.DATE,
+  endTime: Sequelize.DATE
+});
 
 User.hasMany(Reservation);
 
@@ -132,13 +137,7 @@ const Room = sequelize.define('room', {
 });
 
 
-const Reservation = sequelize.define('reservation', {
-  roomId: Sequelize.INTEGER,
-  userId: Sequelize.INTEGER,
-  usersName: Sequelize.STRING,
-  startTime: Sequelize.DATE,
-  endTime: Sequelize.DATE
-});
+
 
 
 // //not in use
