@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import RoomManager from './RoomManager';
-import Scheduler from './Scheduler';
+import RoomManager from './untouched/RoomManager';
+import Scheduler from './untouched/Scheduler';
 import Header from './Header';
 import axios from 'axios';
 
