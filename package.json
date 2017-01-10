@@ -24,11 +24,8 @@
     "express-static": "^1.0.3",
     "moment": "^2.17.1",
     "mysql": "^2.12.0",
-<<<<<<< HEAD
     "pg": "^6.1.2",
-=======
     "querystring": "^0.2.0",
->>>>>>> a2dc4c58a49911f45b087428a3e8540ec3f09200
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",
