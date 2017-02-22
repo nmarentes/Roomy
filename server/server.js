@@ -177,6 +177,10 @@ app.post('/logout', (req, res) => {
   res.status(200).send("Logged out successfully!");
 });
 
+app.delete('/reservation', (req, res)=>{
+  console.log('server.js Delete is being called')
+})
+
 app.listen(8080, function () {
    console.log("...listening on port 8080");
 });
